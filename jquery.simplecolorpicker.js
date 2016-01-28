@@ -125,10 +125,16 @@
 
     showPicker: function() {
       var pos = this.$icon.offset();
+      var iconOutH = 0;
+      if (typeof this.$icon.outerHeight() === 'object'){
+        iconOutH = this.$icon.outerHeight(true);
+      } else {
+        iconOutH = this.$icon.outerHeight();
+      }
       this.$picker.css({
         // Remove some pixels to align the picker icon with the icons inside the dropdown
         left: pos.left - 6,
-        top: pos.top + this.$icon.outerHeight()
+        top: pos.top + iconOutH
       });
 
       this.$picker.show(this.options.pickerDelay);
